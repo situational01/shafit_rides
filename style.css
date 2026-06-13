@@ -463,7 +463,7 @@ a.contact-info-item:hover { color:var(--gold-light); }
 @media (max-width: 768px) {
     .hero {
         min-height: 70vh;               /* shorter on tablets & phones */
-        background-image: url('https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800&h=600&fit=crop');
+        background-image: url('image/hero.png');
     }
 }
 
