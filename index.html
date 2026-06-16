@@ -3,16 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <!-- Favicon -->
-<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
-<link rel="shortcut icon" href="favicon_io/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon_io/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Shafit Rides – Premium executive transportation in Nairobi. Airport transfers, VIP chauffeur, corporate travel, group Rosa buses, and self-drive car hire.">
     <title>Shafit Rides | Luxury Executive Transportation – Nairobi</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Playfair+Display:wght@400..700&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Additional inline styles for inquire actions --- */
+        .inquire-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .inquire-actions .btn-inquire {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        /* Call button – responsive: shows number on desktop, icon-only on mobile */
+        .btn-call {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0 18px;
+            height: 44px;
+            border-radius: 8px;
+            background: #25D366;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .btn-call i {
+            font-size: 18px;
+        }
+
+        .btn-call .call-number {
+            display: inline;
+        }
+
+        .btn-call:hover {
+            background: #1da851;
+            transform: scale(1.02);
+            color: #fff;
+        }
+
+        /* Phone-alt (blue) for services */
+        .btn-call.phone-alt {
+            background: #1a73e8;
+        }
+
+        .btn-call.phone-alt:hover {
+            background: #1557b0;
+        }
+
+        /* For dark service cards, make call button more visible */
+        .service-card .btn-call {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #fff;
+        }
+
+        .service-card .btn-call:hover {
+            background: #25D366;
+            border-color: #25D366;
+            color: #fff;
+        }
+
+        .service-card .btn-call.phone-alt:hover {
+            background: #1a73e8;
+            border-color: #1a73e8;
+        }
+
+        /* Hire cards – light background */
+        .hire-card .btn-call {
+            background: #e8ecf1;
+            color: #1a1a2e;
+        }
+
+        .hire-card .btn-call:hover {
+            background: #25D366;
+            color: #fff;
+        }
+
+        .hire-card .btn-call.phone-alt:hover {
+            background: #1a73e8;
+            color: #fff;
+        }
+
+        /* On phones and tablets, hide the number text and make it a circle */
+        @media (max-width: 768px) {
+            .btn-call {
+                padding: 0;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                justify-content: center;
+                flex-shrink: 0;
+            }
+
+            .btn-call .call-number {
+                display: none;
+            }
+
+            .btn-call i {
+                font-size: 18px;
+                margin: 0;
+            }
+
+            /* service cards: keep the blurred look but circle */
+            .service-card .btn-call {
+                background: rgba(255, 255, 255, 0.15);
+                backdrop-filter: blur(4px);
+                border: 1px solid rgba(255, 255, 255, 0.25);
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+            }
+
+            .service-card .btn-call:hover {
+                background: #25D366;
+                border-color: #25D366;
+            }
+
+            .service-card .btn-call.phone-alt:hover {
+                background: #1a73e8;
+                border-color: #1a73e8;
+            }
+
+            .hire-card .btn-call {
+                background: #e8ecf1;
+                color: #1a1a2e;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+            }
+
+            .hire-card .btn-call:hover {
+                background: #25D366;
+                color: #fff;
+            }
+
+            .hire-card .btn-call.phone-alt:hover {
+                background: #1a73e8;
+                color: #fff;
+            }
+
+            /* Adjust inquire actions for mobile to keep buttons side by side */
+            .inquire-actions {
+                flex-wrap: nowrap;
+                gap: 8px;
+            }
+
+            .inquire-actions .btn-inquire {
+                flex: 1;
+                min-width: auto;
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+
+            .btn-call i {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .inquire-actions {
+                flex-wrap: wrap;
+            }
+            .inquire-actions .btn-inquire {
+                flex: 1 1 100%;
+            }
+            .btn-call {
+                flex: 0 0 44px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -20,14 +203,14 @@
     <div class="top-bar">
         <div class="top-bar-container">
             <div class="top-bar-left">
-                <a href="mailto:info@shafitrides.com" class="top-bar-link">
+                <a href="mailto:shafitrides@gmail.com" class="top-bar-link">
                     <i class="fa-solid fa-envelope"></i>
-                    <span class="hide-mobile">info@shafitrides.com</span>
+                    <span class="hide-mobile">shafitrides@gmail.com</span>
                 </a>
                 <span class="top-bar-divider hide-mobile">|</span>
-                <a href="https://wa.me/254700000000" target="_blank" rel="noopener noreferrer" class="top-bar-link whatsapp-link">
+                <a href="https://wa.me/254713523897" target="_blank" rel="noopener noreferrer" class="top-bar-link whatsapp-link">
                     <i class="fa-brands fa-whatsapp"></i>
-                    <span>+254 700 000 000</span>
+                    <span>+254 713 523 897</span>
                 </a>
             </div>
             <div class="top-bar-right hide-mobile">
@@ -42,8 +225,8 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">
-    <img src="image/shafit_logo.png" alt="Shafit Rides – Luxury Transportation" class="nav-logo-img">
-</a>
+                <img src="image/shafit_logo.png" alt="Shafit Rides – Luxury Transportation" class="nav-logo-img">
+            </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
@@ -129,55 +312,80 @@
                 <div class="service-card" style="background-image: url('image/airport\ transfer.jpg');">
                     <div class="service-card-overlay"></div>
                     <div class="service-card-content">
-                       
                         <h3 class="service-card-title">Airport Transfers</h3>
                         <p class="service-card-description">Timely pickups & drop‑offs. Perfect for business travellers, tourists, and families.</p>
                         <div class="service-card-tags"><span>Business</span><span>Tourists</span><span>Families</span></div>
-                        <a href="#contact" class="btn-inquire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                        <div class="inquire-actions">
+                            <a href="https://wa.me/254713523897?text=Hi%20Shafit%20Rides%2C%20I'd%20like%20to%20inquire%20about%20your%20Airport%20Transfer%20services.%20Please%20share%20details%20on%20pricing%20and%20availability." target="_blank" rel="noopener" class="btn-inquire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="tel:+254713523897" class="btn-call phone-alt" aria-label="Call us">
+                                <i class="fa-solid fa-phone"></i>
+                                <span class="call-number">+254 713 523 897</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <!-- Service 2 -->
                 <div class="service-card" style="background-image: url('image/vip_transport.jpg');">
                     <div class="service-card-overlay"></div>
                     <div class="service-card-content">
-                        
                         <h3 class="service-card-title">VIP Transport</h3>
                         <p class="service-card-description">Executive vehicles, professional chauffeurs, privacy and personalised service.</p>
                         <div class="service-card-tags"><span>Executives</span><span>Dignitaries</span></div>
-                        <a href="#contact" class="btn-inquire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                        <div class="inquire-actions">
+                            <a href="https://wa.me/254713523897?text=Hi%20Shafit%20Rides%2C%20I'm%20interested%20in%20your%20VIP%20Transport%20service.%20Please%20share%20rates%20and%20vehicle%20options." target="_blank" rel="noopener" class="btn-inquire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="tel:+254713523897" class="btn-call phone-alt" aria-label="Call us">
+                                <i class="fa-solid fa-phone"></i>
+                                <span class="call-number">+254 713 523 897</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <!-- Service 3 -->
                 <div class="service-card" style="background-image: url('image/corporate.jpg');">
                     <div class="service-card-overlay"></div>
                     <div class="service-card-content">
-                        
                         <h3 class="service-card-title">Corporate Travel</h3>
                         <p class="service-card-description">Reliable staff & client movement for meetings, conferences, and corporate events.</p>
                         <div class="service-card-tags"><span>Meetings</span><span>Conferences</span></div>
-                        <a href="#contact" class="btn-inquire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                        <div class="inquire-actions">
+                            <a href="https://wa.me/254713523897?text=Hi%20Shafit%20Rides%2C%20I'd%20like%20to%20inquire%20about%20Corporate%20Travel%20solutions%20for%20our%20team.%20Please%20share%20fleet%20options%20and%20pricing." target="_blank" rel="noopener" class="btn-inquire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="tel:+254713523897" class="btn-call phone-alt" aria-label="Call us">
+                                <i class="fa-solid fa-phone"></i>
+                                <span class="call-number">+254 713 523 897</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <!-- Service 4 -->
                 <div class="service-card" style="background-image: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?');">
                     <div class="service-card-overlay"></div>
                     <div class="service-card-content">
-                        
                         <h3 class="service-card-title">Chauffeur Services</h3>
                         <p class="service-card-description">Professional drivers at your service – safe, courteous, and flexible scheduling.</p>
                         <div class="service-card-tags"><span>Local Experts</span><span>Flexible</span></div>
-                        <a href="#contact" class="btn-inquire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                        <div class="inquire-actions">
+                            <a href="https://wa.me/254713523897?text=Hi%20Shafit%20Rides%2C%20I'm%20interested%20in%20your%20Chauffeur%20Services.%20Please%20tell%20me%20more%20about%20pricing%20and%20availability." target="_blank" rel="noopener" class="btn-inquire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="tel:+254713523897" class="btn-call phone-alt" aria-label="Call us">
+                                <i class="fa-solid fa-phone"></i>
+                                <span class="call-number">+254 713 523 897</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <!-- Service 5 -->
                 <div class="service-card" style="background-image: url('image/rosa_bus.jpg');">
                     <div class="service-card-overlay"></div>
                     <div class="service-card-content">
-                        
                         <h3 class="service-card-title">Group Travel – Rosa Buses</h3>
                         <p class="service-card-description">Spacious Rosa buses for weddings, church events, school trips, and tours.</p>
                         <div class="service-card-tags"><span>Weddings</span><span>Church</span><span>Tours</span></div>
-                        <a href="#contact" class="btn-inquire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                        <div class="inquire-actions">
+                            <a href="https://wa.me/254713523897?text=Hi%20Shafit%20Rides%2C%20I'd%20like%20to%20inquire%20about%20Group%20Travel%20with%20Rosa%20buses.%20Please%20share%20capacity%2C%20rates%2C%20and%20availability." target="_blank" rel="noopener" class="btn-inquire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="tel:+254713523897" class="btn-call phone-alt" aria-label="Call us">
+                                <i class="fa-solid fa-phone"></i>
+                                <span class="call-number">+254 713 523 897</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -200,7 +408,13 @@
                         <p class="hire-card-desc">Spacious 7‑seater, automatic, perfect for family outings and business errands.</p>
                         <div class="hire-card-details"><div class="hire-detail"><i class="fa-solid fa-users"></i><span>7 Seats</span></div><div class="hire-detail"><i class="fa-solid fa-gauge"></i><span>Auto</span></div><div class="hire-detail"><i class="fa-solid fa-gas-pump"></i><span>Petrol</span></div></div>
                         <div class="hire-card-pricing"><span class="hire-price">From KES 8,500<span class="hire-period">/day</span></span></div>
-                        <a href="#contact" class="btn-inquire btn-inquire-hire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                        <div class="inquire-actions">
+                            <a href="https://wa.me/254713523897?text=Hi%20Shafit%20Rides%2C%20I'd%20like%20to%20inquire%20about%20hiring%20the%20Toyota%20Voxy%20(self-drive).%20Please%20share%20rates%2C%20requirements%2C%20and%20availability." target="_blank" rel="noopener" class="btn-inquire btn-inquire-hire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="tel:+254713523897" class="btn-call" aria-label="Call us">
+                                <i class="fa-solid fa-phone"></i>
+                                <span class="call-number">+254 713 523 897</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="hire-card">
@@ -210,7 +424,13 @@
                         <p class="hire-card-desc">Sleek and professional, ideal for business meetings or city commutes.</p>
                         <div class="hire-card-details"><div class="hire-detail"><i class="fa-solid fa-users"></i><span>5 Seats</span></div><div class="hire-detail"><i class="fa-solid fa-gauge"></i><span>Auto</span></div><div class="hire-detail"><i class="fa-solid fa-gas-pump"></i><span>Petrol</span></div></div>
                         <div class="hire-card-pricing"><span class="hire-price">From KES 6,000<span class="hire-period">/day</span></span></div>
-                        <a href="#contact" class="btn-inquire btn-inquire-hire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                        <div class="inquire-actions">
+                            <a href="https://wa.me/254713523897?text=Hi%20Shafit%20Rides%2C%20I'd%20like%20to%20inquire%20about%20hiring%20the%20Executive%20Sedan%20(self-drive).%20Please%20share%20rates%20and%20availability." target="_blank" rel="noopener" class="btn-inquire btn-inquire-hire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="tel:+254713523897" class="btn-call" aria-label="Call us">
+                                <i class="fa-solid fa-phone"></i>
+                                <span class="call-number">+254 713 523 897</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="hire-card">
@@ -220,18 +440,30 @@
                         <p class="hire-card-desc">Versatile SUV, higher ground clearance, great for city and light off‑road.</p>
                         <div class="hire-card-details"><div class="hire-detail"><i class="fa-solid fa-users"></i><span>5 Seats</span></div><div class="hire-detail"><i class="fa-solid fa-gauge"></i><span>Auto</span></div><div class="hire-detail"><i class="fa-solid fa-gas-pump"></i><span>Petrol</span></div></div>
                         <div class="hire-card-pricing"><span class="hire-price">From KES 7,200<span class="hire-period">/day</span></span></div>
-                        <a href="#contact" class="btn-inquire btn-inquire-hire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                        <div class="inquire-actions">
+                            <a href="https://wa.me/254713523897?text=Hi%20Shafit%20Rides%2C%20I'd%20like%20to%20inquire%20about%20hiring%20the%20Compact%20SUV%20(self-drive).%20Please%20share%20rates%20and%20availability." target="_blank" rel="noopener" class="btn-inquire btn-inquire-hire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="tel:+254713523897" class="btn-call" aria-label="Call us">
+                                <i class="fa-solid fa-phone"></i>
+                                <span class="call-number">+254 713 523 897</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <!-- new card -->
-                 <div class="hire-card">
+                <div class="hire-card">
                     <div class="hire-card-image"><img src="image/compact_suv.jpg" alt="Compact SUV" loading="lazy"></div>
                     <div class="hire-card-body">
                         <h3 class="hire-card-title">Compact SUV</h3>
                         <p class="hire-card-desc">Versatile SUV, higher ground clearance, great for city and light off‑road.</p>
                         <div class="hire-card-details"><div class="hire-detail"><i class="fa-solid fa-users"></i><span>5 Seats</span></div><div class="hire-detail"><i class="fa-solid fa-gauge"></i><span>Auto</span></div><div class="hire-detail"><i class="fa-solid fa-gas-pump"></i><span>Petrol</span></div></div>
                         <div class="hire-card-pricing"><span class="hire-price">From KES 7,200<span class="hire-period">/day</span></span></div>
-                        <a href="#contact" class="btn-inquire btn-inquire-hire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                        <div class="inquire-actions">
+                            <a href="https://wa.me/254713523897?text=Hi%20Shafit%20Rides%2C%20I'd%20like%20to%20inquire%20about%20hiring%20the%20Compact%20SUV%20(self-drive).%20Please%20share%20rates%20and%20availability." target="_blank" rel="noopener" class="btn-inquire btn-inquire-hire">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="tel:+254713523897" class="btn-call" aria-label="Call us">
+                                <i class="fa-solid fa-phone"></i>
+                                <span class="call-number">+254 713 523 897</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -383,9 +615,9 @@
                         <h3>Contact Information</h3>
                         <p>Reach out anytime – we're here 24/7.</p>
                         <div class="contact-info-list">
-                            <a href="tel:+254700000000" class="contact-info-item"><div class="contact-icon"><i class="fa-solid fa-phone"></i></div><div><strong>Phone</strong><span>+254 700 000 000</span></div></a>
-                            <a href="https://wa.me/254700000000" target="_blank" rel="noopener" class="contact-info-item"><div class="contact-icon whatsapp-icon"><i class="fa-brands fa-whatsapp"></i></div><div><strong>WhatsApp</strong><span>+254 700 000 000</span></div></a>
-                            <a href="mailto:info@shafitrides.com" class="contact-info-item"><div class="contact-icon"><i class="fa-solid fa-envelope"></i></div><div><strong>Email</strong><span>info@shafitrides.com</span></div></a>
+                            <a href="tel:+254713523897" class="contact-info-item"><div class="contact-icon"><i class="fa-solid fa-phone"></i></div><div><strong>Phone</strong><span>+254 713 523 897</span></div></a>
+                            <a href="https://wa.me/254713523897" target="_blank" rel="noopener" class="contact-info-item"><div class="contact-icon whatsapp-icon"><i class="fa-brands fa-whatsapp"></i></div><div><strong>WhatsApp</strong><span>+254 713 523 897</span></div></a>
+                            <a href="mailto:shafitrides@gmail.com" class="contact-info-item"><div class="contact-icon"><i class="fa-solid fa-envelope"></i></div><div><strong>Email</strong><span>shafitrides@gmail.com</span></div></a>
                             <div class="contact-info-item"><div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div><div><strong>Location</strong><span>Nairobi, Kenya</span></div></div>
                             <div class="contact-info-item"><div class="contact-icon"><i class="fa-solid fa-clock"></i></div><div><strong>Hours</strong><span>Monday – Sunday: 24 Hours</span></div></div>
                         </div>
@@ -400,15 +632,15 @@
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                       <a href="#home" class="nav-logo">
-    <img src="image/shafit_logo.png" alt="Shafit Rides – Luxury Transportation" class="nav-logo-img">
-</a>
+                    <a href="#home" class="nav-logo">
+                        <img src="image/shafit_logo.png" alt="Shafit Rides – Luxury Transportation" class="nav-logo-img">
+                    </a>
                     <p>Premium executive transportation in Nairobi. Luxury. Comfort. Trust.</p>
                     <div class="footer-socials">
                         <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://wa.me/254700000000" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://wa.me/254713523897" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -439,7 +671,7 @@
     </footer>
 
     <!-- Floating buttons -->
-    <a href="https://wa.me/254700000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://wa.me/254713523897" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
     <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
 
     <script src="script.js"></script>

@@ -389,6 +389,8 @@ a.contact-info-item:hover { color:var(--gold-light); }
 
     .hamburger { display:flex; }
 
+/* to change/modify */
+
     .nav-menu {
         position: fixed;
         top: calc(var(--navbar-height) + var(--topbar-height));
@@ -404,6 +406,7 @@ a.contact-info-item:hover { color:var(--gold-light); }
         transition: transform 0.4s ease, opacity 0.4s ease;
         z-index: 1050;
         pointer-events: none;
+        align-items: center;
     }
     .nav-menu.active {
         transform: translateY(0);
