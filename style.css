@@ -504,3 +504,104 @@ a.contact-info-item:hover { color:var(--gold-light); }
         height: 32px;
     }
 }
+
+/* ============================================================
+   CONTACT INFO ICONS FIX – Clean, Professional, Human-like
+   ============================================================ */
+
+/* --- Contact list container --- */
+.contact-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 16px;
+}
+
+/* --- Each contact item --- */
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+    padding: 10px 0;
+    font-size: 15px;
+    line-height: 1.5;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: color 0.2s ease;
+}
+
+.contact-info-item:last-child {
+    border-bottom: none;
+}
+
+/* --- Icon styling – clean, no backgrounds, no circles --- */
+.contact-info-item .contact-icon {
+    flex-shrink: 0;
+    width: 18px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+/* --- Hover effect on the whole item --- */
+.contact-info-item:hover {
+    color: #c8a76e;
+}
+
+.contact-info-item:hover .contact-icon {
+    color: #c8a76e;
+}
+
+/* --- WhatsApp icon specific color --- */
+.contact-info-item .whatsapp-icon {
+    color: rgba(37, 211, 102, 0.5);
+}
+
+.contact-info-item:hover .whatsapp-icon {
+    color: #25D366;
+}
+
+/* --- Text content --- */
+.contact-info-item div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.contact-info-item strong {
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.contact-info-item span {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 15px;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+/* --- For light background version (if used outside dark card) --- */
+.contact-info-item.light {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.contact-info-item.light .contact-icon {
+    color: #c8a76e;
+}
+
+.contact-info-item.light strong {
+    color: #9a9a9a;
+}
+
+.contact-info-item.light span {
+    color: #1a1a2e;
+}
+
+.contact-info-item.light:hover {
+    color: #c8a76e;
+}

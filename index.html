@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Playfair+Display:wght@400..700&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
     <style>
-        /* --- GLOBAL FIXES FOR OVERFLOW ON SMALL SCREENS --- */
+        /* --- GLOBAL RESET & OVERFLOW FIX --- */
         * {
             box-sizing: border-box;
         }
@@ -34,9 +34,8 @@
             margin: 0 auto;
             padding: 0 16px;
             width: 100%;
-            overflow: hidden; /* prevent child overflow */
+            overflow: hidden;
         }
-        /* Ensure all flex/grid containers don't force overflow */
         .about-grid,
         .services-grid,
         .car-hire-grid,
@@ -47,7 +46,6 @@
             width: 100%;
             max-width: 100%;
         }
-        /* Contact info list – wrap long text */
         .contact-info-item {
             word-break: break-word;
         }
@@ -55,12 +53,10 @@
             display: inline-block;
             max-width: 100%;
         }
-        /* Fix for hero stats on small screens */
         .hero-stats {
             flex-wrap: wrap;
             justify-content: center;
         }
-        /* Fix for top bar overflow */
         .top-bar .top-bar-container {
             flex-wrap: wrap;
             justify-content: center;
@@ -70,25 +66,20 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-        /* Fix for navbar container */
         .navbar .nav-container {
             padding: 0 16px;
             max-width: 100%;
         }
-        /* Fix for footer */
         .footer-container {
             padding: 0 16px;
             max-width: 100%;
         }
-        /* Fix for fleet cards */
         .fleet-card {
             max-width: 100%;
         }
-        /* Fix for hire cards */
         .hire-card {
             max-width: 100%;
         }
-        /* Prevent any element from forcing horizontal scroll */
         .hero,
         .about,
         .services,
@@ -101,7 +92,6 @@
             max-width: 100%;
             overflow-x: hidden;
         }
-        /* Ensure form inputs don't overflow */
         .contact-form input,
         .contact-form select,
         .contact-form textarea {
@@ -109,7 +99,6 @@
             width: 100%;
             box-sizing: border-box;
         }
-        /* Make sure grid columns wrap properly */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -155,35 +144,12 @@
                 flex-direction: column;
                 align-items: center;
             }
-            .hero-buttons .btn-primary,
-            .hero-buttons .btn-secondary {
-                width: 100%;
-                max-width: 280px;
-                text-align: center;
-            }
-            /* Fix inquire buttons on very small screens */
-            .inquire-actions .btn-inquire {
-                max-width: 100% !important;
-                flex: 1 1 100% !important;
-            }
-            .inquire-actions {
-                flex-wrap: wrap !important;
-            }
-            .btn-call {
-                flex: 0 0 44px !important;
-            }
-            /* Fix contact info */
-            .contact-info-item {
-                flex-wrap: wrap;
-            }
-            .contact-info-item span {
-                word-break: break-all;
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* --- EXISTING STYLES (preserved) --- */
-
-        /* FIXED WHATSAPP BUTTON - ALWAYS VISIBLE */
+        /* --- FIXED WHATSAPP BUTTON --- */
         .whatsapp-float {
             position: fixed !important;
             bottom: 24px !important;
@@ -220,7 +186,7 @@
             }
         }
 
-        /* BOOK NOW BUTTON - ALWAYS VISIBLE WITH TEXT */
+        /* --- BOOK NOW NAV BUTTON --- */
         .btn-book-nav {
             display: inline-flex !important;
             align-items: center !important;
@@ -249,27 +215,8 @@
             transform: translateY(-1px) !important;
             color: #fff !important;
         }
-        @media (max-width: 768px) {
-            .btn-book-nav {
-                padding: 6px 14px !important;
-                font-size: 12px !important;
-                min-height: 34px !important;
-                margin-right: 4px !important;
-            }
-        }
-        @media (max-width: 480px) {
-            .btn-book-nav {
-                padding: 5px 10px !important;
-                font-size: 11px !important;
-                min-height: 30px !important;
-                border-radius: 6px !important;
-            }
-            .btn-book-nav .btn-book-text {
-                font-size: 10px !important;
-            }
-        }
 
-        /* NAVBAR MENU - FIXED POSITIONING & TOGGLE */
+        /* --- NAVBAR MENU --- */
         .navbar .nav-menu {
             display: flex !important;
             align-items: center !important;
@@ -295,7 +242,6 @@
             color: #c8a76e !important;
         }
 
-        /* Mobile menu - full screen overlay with smooth slide */
         @media (max-width: 992px) {
             .navbar .nav-menu {
                 position: fixed !important;
@@ -389,7 +335,7 @@
             }
         }
 
-        /* HERO BUTTONS - REALISTIC WIDTH */
+        /* --- HERO BUTTONS --- */
         .hero-buttons {
             display: flex;
             flex-wrap: wrap;
@@ -435,19 +381,49 @@
             border-color: #fff;
             color: #fff;
         }
-        @media (max-width: 480px) {
-            .hero-buttons .btn-primary,
-            .hero-buttons .btn-secondary {
-                min-width: 140px;
-                padding: 12px 20px;
-                font-size: 14px;
-                white-space: normal;
-                flex: 1 1 100%;
-                max-width: 100%;
-            }
+
+        /* --- STANDARD BUTTON (used in about, contact, etc.) --- */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #c8a76e;
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background: #b8964e;
+            transform: translateY(-2px);
+            color: #fff;
+        }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #fff;
+            color: #fff;
         }
 
-        /* INQUIRE BUTTONS - RESPONSIVE BUT NOT TOO WIDE */
+        /* --- INQUIRE BUTTONS --- */
         .inquire-actions {
             display: flex;
             align-items: center;
@@ -499,7 +475,7 @@
             border-color: #c5ccd8;
         }
 
-        /* Call button */
+        /* --- CALL BUTTON --- */
         .btn-call {
             display: inline-flex;
             align-items: center;
@@ -564,130 +540,7 @@
             color: #fff;
         }
 
-        /* Mobile inquire adjustments */
-        @media (max-width: 992px) {
-            .inquire-actions .btn-inquire {
-                max-width: 160px;
-                min-width: 100px;
-                padding: 8px 14px;
-                font-size: 13px;
-            }
-            .btn-call {
-                padding: 0 14px;
-                height: 40px;
-                font-size: 13px;
-            }
-            .btn-call i {
-                font-size: 15px;
-            }
-        }
-        @media (max-width: 768px) {
-            .inquire-actions {
-                gap: 8px;
-            }
-            .inquire-actions .btn-inquire {
-                max-width: 150px;
-                min-width: 90px;
-                padding: 7px 12px;
-                font-size: 12px;
-                border-radius: 6px;
-            }
-            .btn-call .call-number {
-                display: none;
-            }
-            .btn-call {
-                padding: 0;
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                justify-content: center;
-                flex-shrink: 0;
-                background: #25D366;
-                color: #fff;
-            }
-            .btn-call i {
-                font-size: 16px;
-                margin: 0;
-            }
-            .btn-call.phone-alt {
-                background: #1a73e8;
-            }
-            .btn-call.phone-alt:hover {
-                background: #1557b0;
-            }
-            .service-card .btn-call {
-                background: rgba(255,255,255,0.15);
-                backdrop-filter: blur(4px);
-                border: 1px solid rgba(255,255,255,0.25);
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-            }
-            .service-card .btn-call:hover {
-                background: #25D366;
-                border-color: #25D366;
-            }
-            .service-card .btn-call.phone-alt:hover {
-                background: #1a73e8;
-                border-color: #1a73e8;
-            }
-            .hire-card .btn-call {
-                background: #e8ecf1;
-                color: #1a1a2e;
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-            }
-            .hire-card .btn-call:hover {
-                background: #25D366;
-                color: #fff;
-            }
-            .hire-card .btn-call.phone-alt:hover {
-                background: #1a73e8;
-                color: #fff;
-            }
-        }
-        @media (max-width: 480px) {
-            .inquire-actions {
-                flex-wrap: wrap;
-                gap: 8px;
-                margin-top: 14px;
-            }
-            .inquire-actions .btn-inquire {
-                flex: 1 1 auto;
-                max-width: calc(100% - 52px);
-                min-width: auto;
-                white-space: nowrap;
-                padding: 10px 16px;
-                font-size: 14px;
-                border-radius: 8px;
-                justify-content: center;
-            }
-            .btn-call {
-                width: 44px;
-                height: 44px;
-                flex: 0 0 44px;
-                border-radius: 50%;
-                padding: 0;
-            }
-            .btn-call i {
-                font-size: 18px;
-            }
-            .service-card .btn-call {
-                width: 44px;
-                height: 44px;
-                flex: 0 0 44px;
-                border-radius: 50%;
-            }
-            .hire-card .btn-call {
-                width: 44px;
-                height: 44px;
-                flex: 0 0 44px;
-                border-radius: 50%;
-            }
-        }
-
-        /* BACK TO TOP */
+        /* --- BACK TO TOP --- */
         .back-to-top {
             position: fixed !important;
             bottom: 90px !important;
@@ -720,17 +573,548 @@
             transform: scale(1.06) !important;
             color: #fff !important;
         }
-        @media (max-width: 480px) {
-            .back-to-top {
-                bottom: 80px !important;
-                right: 16px !important;
-                width: 42px !important;
-                height: 42px !important;
-                font-size: 17px !important;
+
+        /* --- MOBILE - UNIFIED BUTTON SIZES (max-width: 768px) --- */
+        @media (max-width: 768px) {
+            .btn-book-nav {
+                padding: 6px 14px !important;
+                font-size: 12px !important;
+                min-height: 34px !important;
+                margin-right: 4px !important;
+                border-radius: 6px !important;
+            }
+            .btn-book-nav .btn-book-text {
+                font-size: 12px !important;
+            }
+
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-secondary,
+            .btn-primary {
+                padding: 10px 20px !important;
+                font-size: 14px !important;
+                min-height: 40px !important;
+                border-radius: 6px !important;
+            }
+
+            .btn-secondary {
+                padding: 10px 20px !important;
+                font-size: 14px !important;
+                min-height: 40px !important;
+                border-radius: 6px !important;
+            }
+
+            .about .btn-primary,
+            .contact .btn-primary.btn-submit {
+                padding: 10px 20px !important;
+                font-size: 14px !important;
+                min-height: 40px !important;
+                border-radius: 6px !important;
+            }
+
+            /* Inquire actions – side by side with compact call button */
+            .inquire-actions {
+                flex-wrap: nowrap !important;
+                gap: 8px !important;
+            }
+            .inquire-actions .btn-inquire {
+                flex: 1 1 0 !important;
+                min-width: 0 !important;
+                max-width: none !important;
+                padding: 8px 12px !important;
+                font-size: 13px !important;
+                min-height: 38px !important;
+                border-radius: 6px !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+            .btn-call {
+                flex: 0 0 38px !important;
+                width: 38px !important;
+                height: 38px !important;
+                border-radius: 50% !important;
+                padding: 0 !important;
+                justify-content: center !important;
+                font-size: 0 !important;
+            }
+            .btn-call i {
+                font-size: 16px !important;
+                margin: 0 !important;
+            }
+            .btn-call .call-number {
+                display: none !important;
+            }
+            .service-card .btn-call,
+            .hire-card .btn-call {
+                flex: 0 0 38px !important;
+                width: 38px !important;
+                height: 38px !important;
+                border-radius: 50% !important;
+                padding: 0 !important;
+                font-size: 0 !important;
+            }
+            .service-card .btn-call i,
+            .hire-card .btn-call i {
+                font-size: 16px !important;
+                margin: 0 !important;
             }
         }
 
-        /* OTHER STYLES (preserved) */
+        /* --- MOBILE PORTRAIT - EVEN SMALLER (max-width: 480px) --- */
+        @media (max-width: 480px) {
+            .btn-book-nav {
+                padding: 5px 10px !important;
+                font-size: 10px !important;
+                min-height: 28px !important;
+                border-radius: 5px !important;
+            }
+            .btn-book-nav .btn-book-text {
+                font-size: 10px !important;
+            }
+
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-secondary,
+            .btn-primary {
+                padding: 8px 16px !important;
+                font-size: 13px !important;
+                min-height: 36px !important;
+                border-radius: 5px !important;
+                min-width: 120px !important;
+                max-width: 100% !important;
+                flex: 1 1 100% !important;
+            }
+
+            .btn-secondary {
+                padding: 8px 16px !important;
+                font-size: 13px !important;
+                min-height: 36px !important;
+                border-radius: 5px !important;
+            }
+
+            .about .btn-primary,
+            .contact .btn-primary.btn-submit {
+                padding: 8px 16px !important;
+                font-size: 13px !important;
+                min-height: 36px !important;
+                border-radius: 5px !important;
+                width: 100% !important;
+                justify-content: center !important;
+            }
+
+            .inquire-actions {
+                gap: 6px !important;
+                margin-top: 10px !important;
+            }
+            .inquire-actions .btn-inquire {
+                padding: 6px 10px !important;
+                font-size: 12px !important;
+                min-height: 34px !important;
+                border-radius: 5px !important;
+            }
+            .btn-call {
+                flex: 0 0 34px !important;
+                width: 34px !important;
+                height: 34px !important;
+            }
+            .btn-call i {
+                font-size: 14px !important;
+            }
+            .service-card .btn-call,
+            .hire-card .btn-call {
+                flex: 0 0 34px !important;
+                width: 34px !important;
+                height: 34px !important;
+            }
+            .service-card .btn-call i,
+            .hire-card .btn-call i {
+                font-size: 14px !important;
+            }
+
+            .hero-buttons {
+                gap: 10px !important;
+            }
+
+            .hero-stats {
+                gap: 12px !important;
+            }
+            .stat-number {
+                font-size: 18px !important;
+            }
+            .stat-label {
+                font-size: 11px !important;
+            }
+
+            .newsletter-form button {
+                padding: 8px 14px !important;
+                font-size: 13px !important;
+                min-height: 34px !important;
+            }
+            .newsletter-form input {
+                padding: 8px 12px !important;
+                font-size: 13px !important;
+                min-height: 34px !important;
+            }
+
+            /* Reduce hire card sizes on mobile */
+            .hire-card-image {
+                height: 120px !important;
+            }
+            .hire-card-body {
+                padding: 14px !important;
+            }
+            .hire-card-title {
+                font-size: 16px !important;
+            }
+            .hire-card-desc {
+                font-size: 13px !important;
+            }
+            .hire-detail {
+                font-size: 12px !important;
+            }
+            .hire-price {
+                font-size: 17px !important;
+            }
+            .hire-badge {
+                font-size: 10px !important;
+                padding: 2px 10px !important;
+            }
+        }
+
+        /* --- VERY SMALL SCREENS (max-width: 360px) --- */
+        @media (max-width: 360px) {
+            .btn-book-nav {
+                padding: 4px 8px !important;
+                font-size: 9px !important;
+                min-height: 24px !important;
+            }
+            .btn-book-nav .btn-book-text {
+                font-size: 9px !important;
+            }
+
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-secondary,
+            .btn-primary,
+            .btn-secondary {
+                padding: 6px 12px !important;
+                font-size: 12px !important;
+                min-height: 32px !important;
+                border-radius: 4px !important;
+            }
+
+            .inquire-actions .btn-inquire {
+                padding: 5px 8px !important;
+                font-size: 11px !important;
+                min-height: 30px !important;
+                border-radius: 4px !important;
+            }
+            .btn-call {
+                flex: 0 0 30px !important;
+                width: 30px !important;
+                height: 30px !important;
+            }
+            .btn-call i {
+                font-size: 12px !important;
+            }
+            .service-card .btn-call,
+            .hire-card .btn-call {
+                flex: 0 0 30px !important;
+                width: 30px !important;
+                height: 30px !important;
+            }
+            .service-card .btn-call i,
+            .hire-card .btn-call i {
+                font-size: 12px !important;
+            }
+
+            .about .btn-primary,
+            .contact .btn-primary.btn-submit {
+                padding: 6px 12px !important;
+                font-size: 12px !important;
+                min-height: 32px !important;
+            }
+        }
+
+        /* --- HIRE CARDS - REDUCED SIZE --- */
+        .hire-card-image {
+            height: 140px;
+        }
+        .hire-card-body {
+            padding: 16px;
+        }
+        .hire-card-title {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+        .hire-card-desc {
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+        .hire-card-details {
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .hire-detail {
+            font-size: 12px;
+        }
+        .hire-detail i {
+            width: 14px;
+        }
+        .hire-card-pricing {
+            margin-bottom: 10px;
+        }
+        .hire-price {
+            font-size: 18px;
+        }
+        .hire-period {
+            font-size: 13px;
+        }
+        .hire-badge {
+            font-size: 10px;
+            padding: 2px 10px;
+            top: 8px;
+            left: 8px;
+        }
+        .hire-badge-new {
+            background: #1a73e8;
+        }
+        .hire-card .inquire-actions {
+            margin-top: 10px;
+            gap: 8px;
+        }
+        .hire-card .inquire-actions .btn-inquire {
+            padding: 6px 14px;
+            font-size: 13px;
+            min-height: 34px;
+        }
+        .hire-card .btn-call {
+            height: 34px;
+            width: 34px;
+            padding: 0;
+            font-size: 0;
+            border-radius: 50%;
+        }
+        .hire-card .btn-call i {
+            font-size: 14px;
+            margin: 0;
+        }
+        .hire-card .btn-call .call-number {
+            display: none;
+        }
+        @media (min-width: 769px) {
+            .hire-card .btn-call {
+                font-size: 13px;
+                padding: 0 14px;
+                width: auto;
+                height: 34px;
+                border-radius: 6px;
+            }
+            .hire-card .btn-call .call-number {
+                display: inline;
+            }
+            .hire-card .btn-call i {
+                font-size: 14px;
+                margin-right: 4px;
+            }
+        }
+
+        /* --- CONTACT INFO - NATURAL, HUMAN-LIKE STYLING --- */
+        .contact-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-top: 16px;
+        }
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: inherit;
+            padding: 6px 0;
+            font-size: 15px;
+            line-height: 1.5;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .contact-info-item:last-child {
+            border-bottom: none;
+        }
+        .contact-info-item .contact-icon {
+            flex-shrink: 0;
+            width: 18px;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+        .contact-info-item:hover .contact-icon {
+            color: #c8a76e;
+        }
+        .contact-info-item div {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .contact-info-item strong {
+            font-weight: 500;
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .contact-info-item span {
+            color: rgba(255,255,255,0.85);
+            font-size: 15px;
+            word-break: break-word;
+        }
+        .contact-info-item a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .contact-info-item a:hover {
+            color: #c8a76e;
+        }
+        .whatsapp-icon {
+            color: #25D366 !important;
+        }
+        .contact-info-item:hover .whatsapp-icon {
+            color: #25D366 !important;
+        }
+
+        /* --- FOOTER - NATURAL, HUMAN-LIKE STYLING --- */
+        .footer {
+            background: #0a0a0a;
+            color: rgba(255,255,255,0.7);
+            padding: 48px 0 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+        .footer-brand p {
+            margin: 12px 0 16px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.55);
+        }
+        .footer-socials {
+            display: flex;
+            gap: 8px;
+        }
+        .footer-socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.5);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 15px;
+        }
+        .footer-socials a:hover {
+            background: rgba(200,167,110,0.15);
+            color: #c8a76e;
+            transform: translateY(-2px);
+        }
+        .footer-links h4 {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 14px;
+            letter-spacing: 0.04em;
+        }
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-links ul li {
+            margin-bottom: 6px;
+        }
+        .footer-links ul li a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        .footer-links ul li a:hover {
+            color: #c8a76e;
+        }
+        .footer-newsletter p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 12px;
+        }
+        .newsletter-form {
+            display: flex;
+            gap: 6px;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.04);
+            color: #fff;
+            font-size: 14px;
+            min-width: 0;
+            transition: border-color 0.3s ease;
+        }
+        .newsletter-form input::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: #c8a76e;
+        }
+        .newsletter-form button {
+            padding: 8px 14px;
+            border-radius: 6px;
+            border: none;
+            background: #c8a76e;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+        .newsletter-form button:hover {
+            background: #b8964e;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: rgba(255,255,255,0.3);
+        }
+        .footer-bottom span {
+            color: rgba(255,255,255,0.4);
+        }
+
+        @media (max-width: 992px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .newsletter-form {
+                flex-wrap: wrap;
+            }
+            .newsletter-form input {
+                flex: 1 1 100%;
+            }
+        }
+
+        /* --- OTHER STYLES (preserved) --- */
         .text-accent { color: #c8a76e; }
         .section-tag {
             display: inline-block;
@@ -758,47 +1142,7 @@
             text-align: center;
             margin-bottom: 48px;
         }
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #c8a76e;
-            color: #fff;
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 16px;
-            text-decoration: none;
-            transition: background 0.3s ease, transform 0.2s ease;
-            border: none;
-            cursor: pointer;
-        }
-        .btn-primary:hover {
-            background: #b8964e;
-            transform: translateY(-2px);
-            color: #fff;
-        }
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: transparent;
-            color: #fff;
-            padding: 14px 28px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 16px;
-            text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.3);
-            transition: all 0.3s ease;
-        }
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: #fff;
-            color: #fff;
-        }
 
-        /* Top bar */
         .top-bar .top-bar-container {
             display: flex;
             align-items: center;
@@ -846,7 +1190,6 @@
             .hide-mobile { display: none; }
         }
 
-        /* Nav container */
         .navbar .nav-container {
             display: flex !important;
             align-items: center !important;
@@ -868,7 +1211,6 @@
             width: auto;
         }
 
-        /* Fix for contact grid on small screens */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -879,46 +1221,8 @@
                 grid-template-columns: 1fr;
             }
         }
-        .contact-info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 8px 0;
-            text-decoration: none;
-            color: inherit;
-            word-break: break-word;
-        }
-        .contact-info-item .contact-icon {
-            flex-shrink: 0;
-            width: 40px;
-            height: 40px;
-            background: #f5f0e8;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #c8a76e;
-        }
-        .contact-info-item div {
-            flex: 1;
-            min-width: 0;
-        }
-        .contact-info-item strong {
-            display: block;
-            font-weight: 600;
-        }
-        .contact-info-item span {
-            display: block;
-            color: #6b7280;
-            font-size: 14px;
-            word-break: break-word;
-        }
-        .whatsapp-icon {
-            background: #25D366 !important;
-            color: #fff !important;
-        }
 
-        /* Service cards background images */
+        /* Service cards */
         .service-card {
             background-size: cover;
             background-position: center;
@@ -981,87 +1285,10 @@
             transform: translateY(-4px);
             box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
-        .hire-card-image {
-            position: relative;
-            height: 180px;
-            overflow: hidden;
-        }
         .hire-card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-        .hire-badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background: #c8a76e;
-            color: #fff;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-        }
-        .hire-badge-new {
-            background: #1a73e8;
-        }
-        .hire-card-body {
-            padding: 20px;
-        }
-        .hire-card-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .hire-card-desc {
-            font-size: 14px;
-            color: #6b7280;
-            margin-bottom: 12px;
-            line-height: 1.5;
-        }
-        .hire-card-details {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 12px;
-            flex-wrap: wrap;
-        }
-        .hire-detail {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 13px;
-            color: #4b5563;
-        }
-        .hire-detail i {
-            color: #c8a76e;
-            width: 16px;
-        }
-        .hire-card-pricing {
-            margin-bottom: 12px;
-        }
-        .hire-price {
-            font-size: 20px;
-            font-weight: 700;
-            color: #1a1a2e;
-        }
-        .hire-period {
-            font-size: 14px;
-            font-weight: 400;
-            color: #6b7280;
-        }
-        .hire-note-card {
-            background: #f8f9fc;
-            padding: 16px 20px;
-            border-radius: 8px;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-top: 24px;
-        }
-        .hire-note-card i {
-            color: #c8a76e;
-            font-size: 20px;
-            margin-top: 2px;
         }
 
         /* Fleet */
@@ -1112,7 +1339,6 @@
             color: #c8a76e;
         }
 
-        /* Safety commitment */
         .safety-commitment {
             margin-top: 40px;
         }
@@ -1154,7 +1380,6 @@
             color: #c8a76e;
         }
 
-        /* Testimonials */
         .testimonial-card {
             background: #fff;
             padding: 24px;
@@ -1197,7 +1422,6 @@
             color: #6b7280;
         }
 
-        /* FAQ */
         .faq-item {
             border-bottom: 1px solid #e5e7eb;
             padding: 12px 0;
@@ -1239,7 +1463,6 @@
             max-height: 200px;
         }
 
-        /* Footer */
         .footer {
             background: #1a1a2e;
             color: rgba(255,255,255,0.8);
@@ -1358,7 +1581,6 @@
             }
         }
 
-        /* Hero stats */
         .hero-stats {
             display: flex;
             justify-content: center;
@@ -1386,6 +1608,224 @@
             .stat-number {
                 font-size: 22px;
             }
+        }
+
+        /* About grid */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .about-image-wrapper {
+            position: relative;
+        }
+        .about-image {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .about-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            padding: 10px 18px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .about-badge i {
+            color: #c8a76e;
+            font-size: 18px;
+        }
+        .about-text {
+            color: #6b7280;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 16px;
+            margin: 20px 0 24px;
+        }
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #1a1a2e;
+        }
+        .about-feature i {
+            color: #c8a76e;
+        }
+
+        /* Hero section base */
+        .hero {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+            padding: 80px 24px;
+            overflow: hidden;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            text-align: center;
+            color: #fff;
+            padding: 20px 0;
+        }
+        .hero-tag {
+            display: inline-block;
+            background: rgba(200,167,110,0.2);
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #c8a76e;
+            margin-bottom: 16px;
+            border: 1px solid rgba(200,167,110,0.2);
+        }
+        .hero-title {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        .hero-emphasis {
+            color: #c8a76e;
+        }
+        .hero-subtitle {
+            font-size: 18px;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto 24px;
+            line-height: 1.6;
+        }
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 60vh;
+                padding: 60px 16px;
+            }
+            .hero-title {
+                font-size: 28px;
+            }
+            .hero-subtitle {
+                font-size: 15px;
+            }
+            .hero-tag {
+                font-size: 11px;
+                padding: 4px 16px;
+            }
+        }
+
+        /* Contact form */
+        .contact-form-wrapper {
+            background: #fff;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .contact-info-wrapper {
+            background: #f8f9fc;
+            padding: 32px;
+            border-radius: 12px;
+        }
+        .form-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a2e;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 480px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .contact-form-wrapper {
+                padding: 20px;
+            }
+            .contact-info-wrapper {
+                padding: 20px;
+            }
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: #1a1a2e;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+            background: #fff;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #c8a76e;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .btn-submit {
+            width: 100%;
+            justify-content: center;
+            margin-top: 8px;
+        }
+
+        .contact-info-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1a1a2e;
+        }
+        .contact-info-card p {
+            color: #6b7280;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -1807,11 +2247,41 @@
                         <h3>Contact Information</h3>
                         <p>Reach out anytime – we're here 24/7.</p>
                         <div class="contact-info-list">
-                            <a href="tel:+254713523897" class="contact-info-item"><div class="contact-icon"><i class="fa-solid fa-phone"></i></div><div><strong>Phone</strong><span>+254 713 523 897</span></div></a>
-                            <a href="https://wa.me/254713523897" target="_blank" rel="noopener" class="contact-info-item"><div class="contact-icon whatsapp-icon"><i class="fa-brands fa-whatsapp"></i></div><div><strong>WhatsApp</strong><span>+254 713 523 897</span></div></a>
-                            <a href="mailto:shafitrides@gmail.com" class="contact-info-item"><div class="contact-icon"><i class="fa-solid fa-envelope"></i></div><div><strong>Email</strong><span>shafitrides@gmail.com</span></div></a>
-                            <div class="contact-info-item"><div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div><div><strong>Location</strong><span>Nairobi, Kenya</span></div></div>
-                            <div class="contact-info-item"><div class="contact-icon"><i class="fa-solid fa-clock"></i></div><div><strong>Hours</strong><span>Monday – Sunday: 24 Hours</span></div></div>
+                            <a href="tel:+254713523897" class="contact-info-item">
+                                <i class="fa-solid fa-phone contact-icon"></i>
+                                <div>
+                                    <strong>Phone</strong>
+                                    <span>+254 713 523 897</span>
+                                </div>
+                            </a>
+                            <a href="https://wa.me/254713523897" target="_blank" rel="noopener" class="contact-info-item">
+                                <i class="fa-brands fa-whatsapp contact-icon whatsapp-icon"></i>
+                                <div>
+                                    <strong>WhatsApp</strong>
+                                    <span>+254 713 523 897</span>
+                                </div>
+                            </a>
+                            <a href="mailto:shafitrides@gmail.com" class="contact-info-item">
+                                <i class="fa-solid fa-envelope contact-icon"></i>
+                                <div>
+                                    <strong>Email</strong>
+                                    <span>shafitrides@gmail.com</span>
+                                </div>
+                            </a>
+                            <div class="contact-info-item">
+                                <i class="fa-solid fa-location-dot contact-icon"></i>
+                                <div>
+                                    <strong>Location</strong>
+                                    <span>Nairobi, Kenya</span>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <i class="fa-solid fa-clock contact-icon"></i>
+                                <div>
+                                    <strong>Hours</strong>
+                                    <span>Monday – Sunday: 24 Hours</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1838,13 +2308,21 @@
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#car-hire">Car Hire</a></li><li><a href="#contact">Contact</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#car-hire">Car Hire</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="#services">Airport Transfers</a></li><li><a href="#services">VIP Transport</a></li><li><a href="#services">Corporate Travel</a></li><li><a href="#services">Chauffeur</a></li><li><a href="#car-hire">Self‑Drive</a></li>
+                        <li><a href="#services">Airport Transfers</a></li>
+                        <li><a href="#services">VIP Transport</a></li>
+                        <li><a href="#services">Corporate Travel</a></li>
+                        <li><a href="#services">Chauffeur</a></li>
+                        <li><a href="#car-hire">Self‑Drive</a></li>
                     </ul>
                 </div>
                 <div class="footer-newsletter">
